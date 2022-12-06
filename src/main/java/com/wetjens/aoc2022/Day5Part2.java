@@ -75,7 +75,7 @@ public class Day5Part2 {
         var stacks = new ArrayList<Stack<Crate>>();
 
         try (var lines = Files.lines(path)) {
-            lines.filter(line -> line.startsWith("["))
+            lines.filter(line -> line.contains("["))
                     .forEachOrdered(line -> {
                         var chars = line.toCharArray();
 
