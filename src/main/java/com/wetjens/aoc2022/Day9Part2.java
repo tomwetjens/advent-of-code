@@ -13,10 +13,10 @@ public class Day9Part2 {
     public static void main(String[] args) throws Exception {
         var rope = new Rope(10);
 
+        System.out.println("== Initial State ==\n");
+
         var writer = new PrintWriter(System.out);
-        writer.println("== Initial State ==\n");
         rope.print(writer);
-        writer.flush();
 
         var visited = new HashSet<Coords>();
         visited.add(rope.tail());
@@ -24,8 +24,7 @@ public class Day9Part2 {
         for (var line : Files.readAllLines(Paths.get("inputs/day9/input.txt"))) {
             var motion = Motion.parseLine(line);
 
-            writer.println("== " + motion.direction() + " " + motion.steps() + " ==\n");
-            writer.flush();
+            System.out.println("== " + motion.direction() + " " + motion.steps() + " ==\n");
 
             for (var step = 0; step < motion.steps(); step++) {
                 rope.move(motion.direction());
@@ -38,8 +37,7 @@ public class Day9Part2 {
             }
         }
 
-        writer.println("Visited: " + visited.size());
-        writer.flush();
+        System.out.println("Visited: " + visited.size());
     }
 
     static class Rope {
@@ -93,6 +91,7 @@ public class Day9Part2 {
             }
 
             writer.println();
+            writer.flush();
         }
 
         private void printKnot(int x, int y, PrintWriter writer) {
